@@ -201,13 +201,19 @@
 			var ref = firebase.database().ref('SurveyData');
 		 ref.once('value') .then(function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
+			    var childData = childSnapshot.val();
 				label.push(childData.Name);
 				before.push(childData.BeforeCG);
 				after.push(childData.AfterCG);				
 			});
 				
 		});
-		const ctx = document.getElementById('myChart');
+		show();
+		console.log(before);
+		}
+		function show()
+		{
+			const ctx = document.getElementById('myChart');
 		new Chart(ctx, {
    type: 'line',
    data: {
