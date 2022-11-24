@@ -1,11 +1,12 @@
 <html>
+
 <head>
-<title>Community Service Project</title>
-<link rel='Shortcut Icon' type='image/x-icon' href='assets/img/title_logo.png'>
-</head>
+	<title>Community Service Project</title>
+	<link rel='Shortcut Icon' type='image/x-icon' href='assets/img/title_logo.png'> </head>
+
 <body>
-<iframe id="gfgFrame" src="" style="height: 99%; width: 100%; border:none;"></iframe>
-<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<iframe id="gfgFrame" src="" style="height: 99%; width: 100%; border:none;"></iframe>
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 	<script type="text/javascript">
 	var file;
 	window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
@@ -23,16 +24,14 @@
 			firebase.initializeApp(firebaseConfig);
 			firebase.database().ref('CriticalData/currentPage').once('value').then(function(snapshot) {
 				file = snapshot.A.B;
-				if(file=="false")
-				{
-				    document.getElementById("gfgFrame").src= "indexErr.html";
-				}
-				else
-				{
-				    document.getElementById("gfgFrame").src= "indexMain.html";
+				if(file == "false") {
+					document.getElementById("gfgFrame").src = "indexErr.html";
+				} else {
+					document.getElementById("gfgFrame").src = "indexMain.html";
 				}
 			});
 		}
 	</script>
 </body>
+
 </html>
