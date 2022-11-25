@@ -20,7 +20,17 @@
 	<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 	<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 	<!-- Template Main CSS File -->
-	<link href="assets/css/main.css" rel="stylesheet"> </head>
+	<link href="assets/css/main.css" rel="stylesheet">
+	<style>
+	td {
+		text-align: center;
+	}
+	
+	th {
+		text-align: center;
+	}
+	</style>
+</head>
 
 <body>
 	<!-- ======= Header ======= -->
@@ -61,7 +71,25 @@
 		</div>
 		<!-- End Breadcrumbs -->
 		<section class="sample-page">
-			<div class="container" data-aos="fade-up"> </div>
+			<div class="container" data-aos="fade-up"> 
+				<div class="table-responsive"  style="overflow-x:auto;">
+					<table id="myTable" class="table table-bordered" bgcolor="#c9dcf8">
+						<tr bgcolor="#7eadf0">
+							<th rowspan="2">NAME</th>
+							<th rowspan="2">GENDER</th>
+							<th rowspan="2">CLASS</th>
+							<th colspan="5">FEEDBACK</th>
+						</tr>
+						<tr bgcolor="#7eadf0">
+							<th>UNDERSTANDABILITY (%)</th>
+							<th>HELPFUL (%)</th>
+							<th>KNOWLEDGE GAINED (%)</th>
+							<th>USEFUL (%)</th>
+							<th>OVERALL (%)</th>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</section>
 	</main>
 	<!-- End #main -->
@@ -126,6 +154,51 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Firebase files -->
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<script type="text/javascript">
+	var firebaseConfig;
+	window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
+		{
+			firebaseConfig = {
+				apiKey: "AIzaSyBKg4---qP8-bFcTQoorfqQ0Cn_duQbsS8",
+				authDomain: "csp-web-34dad.firebaseapp.com",
+				databaseURL: "https://csp-web-34dad-default-rtdb.firebaseio.com/",
+				projectId: "csp-web-34dad",
+				storageBucket: "csp-web-34dad.appspot.com",
+				messagingSenderId: "938321891529",
+				appId: "1:938321891529:web:9bc0d55d6ef54343557d18",
+				measurementId: "G-EHPPCXK7B3"
+			};
+			firebase.initializeApp(firebaseConfig);
+			var ref = firebase.database().ref('FeedbackData');
+			var table = document.getElementById("myTable");
+			ref.once('value').then(function(snapshot) {
+				snapshot.forEach(function(childSnapshot) {
+					var childData = childSnapshot.val();
+					var row = table.insertRow();
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					var cell5 = row.insertCell(4);
+					var cell6 = row.insertCell(5);
+					var cell7 = row.insertCell(6);
+					var cell8 = row.insertCell(7);
+					cell1.innerHTML = childData.Name;
+					cell2.innerHTML = childData.Gender;
+					cell3.innerHTML = childData.Class;
+					cell4.innerHTML = childData.Understandability + " %";
+					cell5.innerHTML = childData.Helpful + " %";
+					cell6.innerHTML = childData.Knowledge + " %";
+					cell7.innerHTML = childData.Useful + " %";
+					cell8.innerHTML = childData.Overall + " %";
+				});
+				var row = table.insertRow();
+				var cell1 = row.insertCell(0);
+				cell1.colSpan = "8";
+				cell1.innerHTML = "Total Records : " + (document.getElementById("myTable").rows.length - 3);
+			});
+		}
+	</script>
 </body>
 
 </html>
