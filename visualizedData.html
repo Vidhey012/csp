@@ -61,10 +61,14 @@
 		</div>
 		<!-- End Breadcrumbs -->
 		<section class="sample-page">
-			<div class="container" data-aos="fade-up">
+			<div id="chart" class="container" data-aos="fade-up">
+			
+			
 				<div class="chart-container">
-					<canvas id="myChart"></canvas>
+					<canvas id="myChart" width="90vh"></canvas>
 				</div>
+				
+				
 			</div>
 		</section>
 	</main>
@@ -157,6 +161,8 @@
 					after.push(childData.AfterCG);
 				});
 			}).then(() => {
+				height=(before.length)*10;
+				document.getElementById("myChart").setAttribute("height",height);
 				show();
 			});
 		}
@@ -195,8 +201,8 @@
 				},
 				animations: {
 					tension: {
-						duration: 1000,
-						easing: 'linear',
+						duration: 0,
+						easing: 'easeInOutBounce',
 						from: 1,
 						to: 0,
 						loop: true
