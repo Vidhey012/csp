@@ -71,6 +71,43 @@
 		</div>
 		<!-- End Breadcrumbs -->
 		<section class="text-center">
+			<div class="row">
+			<div class="col-md-6">
+			<h3>UNDERSTANDABILITY</h3>
+			<div class="progress" style="margin:5vh; margin-top:0vh">
+				<div id="un" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+			</div>
+			</div>
+			<div class="col-md-6">
+			<h3>HELPFUL</h3>
+			<div class="progress" style="margin:5vh; margin-top:0vh">
+				<div id="h" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+			</div>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-md-6">
+			<h3>KNOWLEDGE GAINED </h3>
+			<div class="progress" style="margin:5vh; margin-top:0vh">
+				<div id="k" class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+			</div>
+			</div>
+			<div class="col-md-6">
+			<h3>USEFUL</h3>
+			<div class="progress" style="margin:5vh; margin-top:0vh">
+				<div id="u" class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+			</div>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+			<h3>OVERALL FEEDBACK</h3>
+			<div class="progress" style="margin:5vh; margin-top:0vh">
+				<div id="o" class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+			</div>
+			</div>
+			</div>
 			<div style="margin-left:3vh; margin-right:3vh" data-aos="fade-up"> 
 				<div class="col-12 text-center">
 					<table id="myTable" class="table table-bordered" bgcolor="#c9dcf8">
@@ -155,7 +192,7 @@
 	<!-- Firebase files -->
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 	<script type="text/javascript">
-	var firebaseConfig;
+	var firebaseConfig,un=[],h=[],k=[],u=[],o=[];
 	window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
 		{
 			firebaseConfig = {
@@ -183,6 +220,11 @@
 					var cell6 = row.insertCell(5);
 					var cell7 = row.insertCell(6);
 					var cell8 = row.insertCell(7);
+					un.push(parseInt(childData.Understandability));
+					h.push(parseInt(childData.Helpful));
+					k.push(parseInt(childData.Knowledge));
+					u.push(parseInt(childData.Useful));
+					o.push(parseInt(childData.Overall));
 					cell1.innerHTML = childData.Name;
 					cell2.innerHTML = childData.Gender;
 					cell3.innerHTML = childData.Class;
@@ -191,7 +233,23 @@
 					cell6.innerHTML = childData.Knowledge + " %";
 					cell7.innerHTML = childData.Useful + " %";
 					cell8.innerHTML = childData.Overall + " %";
+					
 				});
+				averageun = un.reduce((a, b) => a + b, 0) / un.length;
+				averageh = h.reduce((a, b) => a + b, 0) / h.length;
+				averagek = k.reduce((a, b) => a + b, 0) / k.length;
+				averageu = u.reduce((a, b) => a + b, 0) / u.length;
+				averageo = o.reduce((a, b) => a + b, 0) / o.length;
+				document.getElementById("un").style.width=averageun+"%";
+				document.getElementById("h").style.width=averageh+"%";
+				document.getElementById("k").style.width=averagek+"%";
+				document.getElementById("u").style.width=averageu+"%";
+				document.getElementById("o").style.width=averageo+"%";
+				document.getElementById("un").innerHTML=averageun+"%";
+				document.getElementById("h").innerHTML=averageh+"%";
+				document.getElementById("k").innerHTML=averagek+"%";
+				document.getElementById("u").innerHTML=averageu+"%";
+				document.getElementById("o").innerHTML=averageo+"%";
 				var row = table.insertRow();
 				var cell1 = row.insertCell(0);
 				cell1.colSpan = "8";
