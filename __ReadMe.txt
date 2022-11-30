@@ -6,4 +6,6 @@ reviews-pic & video
 
 --->Total viewers in admin.html(use local storage to identify views ,modify in db)
 
+--->popup image in gallery
+
 --->beautify all code
