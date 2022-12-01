@@ -1,4 +1,2 @@
 --->admin & index(our team-pics)
 
---->Total viewers in admin.html(use local storage to identify views ,modify in db)
-
