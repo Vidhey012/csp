@@ -198,6 +198,11 @@
 	$(".sample-page img ").click(function(){
 		Swal.fire({
 			imageUrl: $(this)[0].currentSrc,
+			showConfirmButton: false,
+			showDenyButton: true,
+			denyButtonText: 'CLOSE',
+			background: '#c9dcf8',
+			backdrop: 'rgba(0,0,123,0.4)',
 			imageAlt: 'Slow Internet !'
 		});
 	});
