@@ -386,6 +386,7 @@
     <script src="assets/js/main.js"></script>
     <!-- Sweet Alerts JS File -->
     <script src="assets/js/swal.js"></script>
+	<script src="assets/js/swal1.js"></script>
     <!-- JQuery files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Firebase files -->
@@ -404,6 +405,17 @@
                     measurementId: "G-EHPPCXK7B3"
                 };
                 firebase.initializeApp(firebaseConfig);
+				const Toast = Swal.mixin({
+					toast: true,
+					position: 'top-end',
+					showConfirmButton: false,
+					timer: 3000,
+					timerProgressBar: true,
+					didOpen: (toast) => {
+						toast.addEventListener('mouseenter', Swal.stopTimer)
+						toast.addEventListener('mouseleave', Swal.resumeTimer)
+					}			
+				});
                 firebase.database().ref('Reviews/total').once('value').then(function(snapshot) {
                     total = snapshot.val();
                     document.getElementById("total").setAttribute("data-purecounter-end", total);
@@ -416,6 +428,20 @@
                     negative = snapshot.val();
                     document.getElementById("negative").setAttribute("data-purecounter-end", negative);
                 });
+				firebase.database().ref('Reviews/views').once('value').then(function(snapshot) {
+					views = snapshot.val();
+					if(localStorage.getItem("aauser")=="null" || localStorage.getItem("aauser")==null){
+						views = views+1;
+						localStorage.setItem("aauser", views);
+						firebase.database().ref('Reviews').update({
+							"views": views
+						});	
+					}
+					Toast.fire({
+						icon: 'info',
+						title: 'Hey Viewer-'+localStorage.getItem("aauser")+' of '+views+' viewers !'
+					});
+				});
             }
 
         function whatsapp() {
