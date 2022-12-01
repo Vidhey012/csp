@@ -189,11 +189,19 @@
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
 	<!-- Sweet Alerts JS File -->
-	<script src="assets/js/swal.js"></script>
+	<script src="assets/js/swal1.js"></script>
 	<!-- JQuery files -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Firebase files -->
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<script type="text/javascript">
+	$(".sample-page img ").click(function(){
+		Swal.fire({
+			imageUrl: $(this)[0].currentSrc,
+			imageAlt: 'Slow Internet !'
+		});
+	});
+	</script>
 </body>
 
 </html>
