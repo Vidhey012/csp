@@ -1,2 +1,4 @@
 --->admin & index(our team-pics)
 
+--->add views to admin.......add reset views button.......store devicenames
+
