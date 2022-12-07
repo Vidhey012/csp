@@ -21,7 +21,13 @@
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Template Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet"> </head>
+    <link href="assets/css/main.css" rel="stylesheet"> 
+	<style>
+	.no-border {
+		border: 0 !important;
+	}
+	</style>
+	</head>
 
 <body>
     <!-- ======= Header ======= -->
@@ -438,7 +444,10 @@
 						});	
 					}
 					Toast.fire({
-						 iconHtml: '<img src="assets/img/eye.gif" >',
+						iconHtml: '<img src="assets/img/eye.gif" >',
+						customClass: {
+							icon: 'no-border'
+					    },
 						title: 'Hey Viewer-'+localStorage.getItem("aauser")+' of '+views+' viewers !'
 					});
 				});
