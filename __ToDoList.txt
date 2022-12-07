@@ -1,4 +1,13 @@
 --->admin & index(our team-pics)
 
---->add views to admin.......add reset views button.......store devicenames
+--->add views to admin
 
+--->Pic size in gallery
+
+--->Video size
+
+--->Change views text
+
+--->Change icon on views
+
+--->Add devices names
