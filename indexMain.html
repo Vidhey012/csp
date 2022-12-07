@@ -409,7 +409,7 @@
 					toast: true,
 					position: 'top-end',
 					showConfirmButton: false,
-					timer: 3000,
+					timer: 5000,
 					timerProgressBar: true,
 					didOpen: (toast) => {
 						toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -438,7 +438,7 @@
 						});	
 					}
 					Toast.fire({
-						icon: 'info',
+						 iconHtml: '<img src="assets/img/eye.gif" >',
 						title: 'Hey Viewer-'+localStorage.getItem("aauser")+' of '+views+' viewers !'
 					});
 				});
