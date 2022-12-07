@@ -1,13 +1,1 @@
---->admin & index(our team-pics)
-
---->add views to admin
-
---->Pic size in gallery
-
---->Video size
-
---->Change views text
-
---->Change icon on views
-
---->Add devices names
+--->admin & index(our team-pics , Add devices names)
